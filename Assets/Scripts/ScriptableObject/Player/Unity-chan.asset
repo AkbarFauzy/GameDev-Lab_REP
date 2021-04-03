@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 399dcdf66bff56641976f51264d254f0, type: 3}
+  m_Name: Unity-chan
+  m_EditorClassIdentifier: 
+  lvl: 0
+  nextLvl: 0
+  sp: 0
+  exp: 0
+  ATBAmount: 0
+  attackType: 
+  baseHealth: 0
+  baseMana: 0
+  Speed: 0
+  driveGauge: 0
+  MAXHealth: 0
+  currentHealth: 0
+  MAXMana: 0
+  currentMana: 0
+  STR: 55
+  PDEF: 10
+  INT: 20
+  MDEF: 5
+  VIT: 20
+  AGI: 10
+  LUK: 1
+  healthModifier: 0
+  manaModifier: 0

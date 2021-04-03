@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 399dcdf66bff56641976f51264d254f0, type: 3}
+  m_Name: Balabala
+  m_EditorClassIdentifier: 
+  lvl: 1
+  attackType: ranged
+  baseATK: 32
+  basePDEF: 12
+  baseMDEF: 22
+  baseHealth: 100
+  baseMana: 100
+  Speed: 1
+  MAXHealth: 100
+  currentHealth: 100
+  MAXMana: 100
+  currentMana: 100
+  STR: 3
+  INT: 10
+  FOC: 6
+  VIT: 4
+  AGI: 3
+  LUK: 2
+  healthModifier: 0.1
+  manaModifier: 0.1
+  statsModifier: 0
