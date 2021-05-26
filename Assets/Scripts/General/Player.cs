@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : Characters
 {
     [SerializeField] private CharacterStats stats;
+    public CharacterStats GetStats() => stats;
     public CharacterController CControl;
     // public BarScript bar;
 
@@ -33,8 +34,6 @@ public class Player : Characters
         baseMana = stats.baseMana;
         maxMana = baseMana + CalculateMaxMana();
         currentMana = stats.currentMana;
-         
-    
     }
 
     void Start()
@@ -42,13 +41,6 @@ public class Player : Characters
         anim = this.GetComponent<Animator>();
         //bar.setMaxValue(stats.currentHealth, maxHP);
         //bar.setValue(stats.currentHealth);
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public int NextLevel(int currentLvl) {
@@ -61,29 +53,4 @@ public class Player : Characters
         
         return Exp;
     }
-
-
-    public void GenerateAP()
-    {
-
-    }
-
-    public int GetMaxHP() {
-        return maxHealth;
-    }
-
-    public int GetMaxMP()
-    {
-        return maxMana;
-    }
-    public int GetCurrentMP()
-    {
-        return currentMana;
-    }
-
-    public CharacterStats GetStats()
-    {
-        return stats;
-    }
-
 }

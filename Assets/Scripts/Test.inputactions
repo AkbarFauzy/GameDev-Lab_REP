@@ -30,6 +30,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Cancel",
+                    "type": "Button",
+                    "id": "0d174884-a443-4bb3-b9e5-a0ccc4015fbd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Down",
                     "type": "Button",
                     "id": "c81f9104-dbe9-4d48-9e08-1657f7285912",
@@ -49,30 +57,6 @@
                     "name": "UpDown",
                     "type": "Button",
                     "id": "185a3ea0-991d-4ed8-ad77-95a35fdacc1c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Talent",
-                    "type": "Button",
-                    "id": "9c54cc7a-530e-46ff-87d6-07671152800b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Skill",
-                    "type": "Button",
-                    "id": "d3b80b64-233b-458a-96f3-a6ed50d61058",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Item",
-                    "type": "Button",
-                    "id": "b62e99fe-ed7a-49cd-b775-b0ae65a07fd8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -235,34 +219,12 @@
                 },
                 {
                     "name": "",
-                    "id": "9d08df06-d859-4bb6-ba51-3e0122aa8f38",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Talent",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5fe69471-0be6-41fb-9995-533d26051c3a",
+                    "id": "96eafbdc-6274-41c4-8f0b-2bb8ec14e209",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Skill",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "936c5ea9-c94e-4342-b50c-30f842d0cec7",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Item",
+                    "groups": "New control scheme",
+                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -782,6 +744,17 @@
             "devices": [
                 {
                     "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "New control scheme1",
+            "bindingGroup": "New control scheme1",
+            "devices": [
+                {
+                    "devicePath": "<XInputController>",
                     "isOptional": false,
                     "isOR": false
                 }

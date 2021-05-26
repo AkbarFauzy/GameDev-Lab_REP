@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Test.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Test.inputactions'
 
 using System;
 using System.Collections;
@@ -43,6 +43,14 @@ public class @Test : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""0d174884-a443-4bb3-b9e5-a0ccc4015fbd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Down"",
                     ""type"": ""Button"",
                     ""id"": ""c81f9104-dbe9-4d48-9e08-1657f7285912"",
@@ -62,30 +70,6 @@ public class @Test : IInputActionCollection, IDisposable
                     ""name"": ""UpDown"",
                     ""type"": ""Button"",
                     ""id"": ""185a3ea0-991d-4ed8-ad77-95a35fdacc1c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Talent"",
-                    ""type"": ""Button"",
-                    ""id"": ""9c54cc7a-530e-46ff-87d6-07671152800b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Skill"",
-                    ""type"": ""Button"",
-                    ""id"": ""d3b80b64-233b-458a-96f3-a6ed50d61058"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Item"",
-                    ""type"": ""Button"",
-                    ""id"": ""b62e99fe-ed7a-49cd-b775-b0ae65a07fd8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -248,34 +232,12 @@ public class @Test : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9d08df06-d859-4bb6-ba51-3e0122aa8f38"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Talent"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5fe69471-0be6-41fb-9995-533d26051c3a"",
+                    ""id"": ""96eafbdc-6274-41c4-8f0b-2bb8ec14e209"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Skill"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""936c5ea9-c94e-4342-b50c-30f842d0cec7"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Item"",
+                    ""groups"": ""New control scheme"",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -799,6 +761,17 @@ public class @Test : IInputActionCollection, IDisposable
                     ""isOR"": false
                 }
             ]
+        },
+        {
+            ""name"": ""New control scheme1"",
+            ""bindingGroup"": ""New control scheme1"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<XInputController>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
@@ -807,12 +780,10 @@ public class @Test : IInputActionCollection, IDisposable
         m_Battle_Right = m_Battle.FindAction("Right", throwIfNotFound: true);
         m_Battle_Left = m_Battle.FindAction("Left", throwIfNotFound: true);
         m_Battle_Submit = m_Battle.FindAction("Submit", throwIfNotFound: true);
+        m_Battle_Cancel = m_Battle.FindAction("Cancel", throwIfNotFound: true);
         m_Battle_Down = m_Battle.FindAction("Down", throwIfNotFound: true);
         m_Battle_Up = m_Battle.FindAction("Up", throwIfNotFound: true);
         m_Battle_UpDown = m_Battle.FindAction("UpDown", throwIfNotFound: true);
-        m_Battle_Talent = m_Battle.FindAction("Talent", throwIfNotFound: true);
-        m_Battle_Skill = m_Battle.FindAction("Skill", throwIfNotFound: true);
-        m_Battle_Item = m_Battle.FindAction("Item", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -877,12 +848,10 @@ public class @Test : IInputActionCollection, IDisposable
     private readonly InputAction m_Battle_Right;
     private readonly InputAction m_Battle_Left;
     private readonly InputAction m_Battle_Submit;
+    private readonly InputAction m_Battle_Cancel;
     private readonly InputAction m_Battle_Down;
     private readonly InputAction m_Battle_Up;
     private readonly InputAction m_Battle_UpDown;
-    private readonly InputAction m_Battle_Talent;
-    private readonly InputAction m_Battle_Skill;
-    private readonly InputAction m_Battle_Item;
     public struct BattleActions
     {
         private @Test m_Wrapper;
@@ -890,12 +859,10 @@ public class @Test : IInputActionCollection, IDisposable
         public InputAction @Right => m_Wrapper.m_Battle_Right;
         public InputAction @Left => m_Wrapper.m_Battle_Left;
         public InputAction @Submit => m_Wrapper.m_Battle_Submit;
+        public InputAction @Cancel => m_Wrapper.m_Battle_Cancel;
         public InputAction @Down => m_Wrapper.m_Battle_Down;
         public InputAction @Up => m_Wrapper.m_Battle_Up;
         public InputAction @UpDown => m_Wrapper.m_Battle_UpDown;
-        public InputAction @Talent => m_Wrapper.m_Battle_Talent;
-        public InputAction @Skill => m_Wrapper.m_Battle_Skill;
-        public InputAction @Item => m_Wrapper.m_Battle_Item;
         public InputActionMap Get() { return m_Wrapper.m_Battle; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -914,6 +881,9 @@ public class @Test : IInputActionCollection, IDisposable
                 @Submit.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnSubmit;
                 @Submit.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnSubmit;
                 @Submit.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnSubmit;
+                @Cancel.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnCancel;
                 @Down.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnDown;
                 @Down.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnDown;
                 @Down.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnDown;
@@ -923,15 +893,6 @@ public class @Test : IInputActionCollection, IDisposable
                 @UpDown.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnUpDown;
                 @UpDown.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnUpDown;
                 @UpDown.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnUpDown;
-                @Talent.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnTalent;
-                @Talent.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnTalent;
-                @Talent.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnTalent;
-                @Skill.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnSkill;
-                @Skill.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnSkill;
-                @Skill.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnSkill;
-                @Item.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnItem;
-                @Item.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnItem;
-                @Item.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnItem;
             }
             m_Wrapper.m_BattleActionsCallbackInterface = instance;
             if (instance != null)
@@ -945,6 +906,9 @@ public class @Test : IInputActionCollection, IDisposable
                 @Submit.started += instance.OnSubmit;
                 @Submit.performed += instance.OnSubmit;
                 @Submit.canceled += instance.OnSubmit;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
                 @Down.started += instance.OnDown;
                 @Down.performed += instance.OnDown;
                 @Down.canceled += instance.OnDown;
@@ -954,15 +918,6 @@ public class @Test : IInputActionCollection, IDisposable
                 @UpDown.started += instance.OnUpDown;
                 @UpDown.performed += instance.OnUpDown;
                 @UpDown.canceled += instance.OnUpDown;
-                @Talent.started += instance.OnTalent;
-                @Talent.performed += instance.OnTalent;
-                @Talent.canceled += instance.OnTalent;
-                @Skill.started += instance.OnSkill;
-                @Skill.performed += instance.OnSkill;
-                @Skill.canceled += instance.OnSkill;
-                @Item.started += instance.OnItem;
-                @Item.performed += instance.OnItem;
-                @Item.canceled += instance.OnItem;
             }
         }
     }
@@ -1081,17 +1036,24 @@ public class @Test : IInputActionCollection, IDisposable
             return asset.controlSchemes[m_NewcontrolschemeSchemeIndex];
         }
     }
+    private int m_Newcontrolscheme1SchemeIndex = -1;
+    public InputControlScheme Newcontrolscheme1Scheme
+    {
+        get
+        {
+            if (m_Newcontrolscheme1SchemeIndex == -1) m_Newcontrolscheme1SchemeIndex = asset.FindControlSchemeIndex("New control scheme1");
+            return asset.controlSchemes[m_Newcontrolscheme1SchemeIndex];
+        }
+    }
     public interface IBattleActions
     {
         void OnRight(InputAction.CallbackContext context);
         void OnLeft(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
         void OnDown(InputAction.CallbackContext context);
         void OnUp(InputAction.CallbackContext context);
         void OnUpDown(InputAction.CallbackContext context);
-        void OnTalent(InputAction.CallbackContext context);
-        void OnSkill(InputAction.CallbackContext context);
-        void OnItem(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -945,7 +945,6 @@ GameObject:
   - component: {fileID: 2144993312196230981}
   - component: {fileID: 5424322162574340746}
   - component: {fileID: 2246730818254395318}
-  - component: {fileID: 6577994067404206229}
   m_Layer: 0
   m_Name: DungeonSkeleton_demo
   m_TagString: Untagged
@@ -1012,7 +1011,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -1024,7 +1023,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8227528769407896934}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61cf6d51f8471ac44b116a9b5bdaca4d, type: 3}
   m_Name: 
@@ -1066,22 +1065,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Skeleton
   characterSprite: {fileID: 0}
-  attackType: melee
+  attackType: 0
   anim: {fileID: 2470494889551014225}
   equipment: []
+  skills: []
+  slot: 0
   stats: {fileID: 11400000, guid: d870738f3c71eae46803450b4e0accd0, type: 2}
---- !u!114 &6577994067404206229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8227528769407896934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6842bfdebdc84ae45b35e170480972e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9004004327344154447
 GameObject:
   m_ObjectHideFlags: 0

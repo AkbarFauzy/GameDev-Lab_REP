@@ -12,26 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399dcdf66bff56641976f51264d254f0, type: 3}
   m_Name: Unity-chan
   m_EditorClassIdentifier: 
-  lvl: 0
-  nextLvl: 0
-  sp: 0
-  exp: 0
-  ATBAmount: 0
-  attackType: 
-  baseHealth: 0
-  baseMana: 0
-  Speed: 0
-  driveGauge: 0
+  lvl: 1
+  attackType: ranged
+  baseATK: 32
+  basePDEF: 12
+  baseMDEF: 10
+  baseHealth: 414
+  baseMana: 100
+  Speed: 10
   MAXHealth: 0
-  currentHealth: 0
+  currentHealth: 100
   MAXMana: 0
-  currentMana: 0
+  currentMana: 100
   STR: 55
-  PDEF: 10
   INT: 20
-  MDEF: 5
+  FOC: 0
   VIT: 20
   AGI: 10
   LUK: 1
-  healthModifier: 0
-  manaModifier: 0
+  healthModifier: 0.1
+  manaModifier: 0.1
+  statsModifier: 0

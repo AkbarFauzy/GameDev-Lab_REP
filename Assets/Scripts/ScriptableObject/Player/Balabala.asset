@@ -19,7 +19,7 @@ MonoBehaviour:
   baseMDEF: 22
   baseHealth: 100
   baseMana: 100
-  Speed: 1
+  Speed: 10
   MAXHealth: 100
   currentHealth: 100
   MAXMana: 100
@@ -28,7 +28,7 @@ MonoBehaviour:
   INT: 10
   FOC: 6
   VIT: 4
-  AGI: 3
+  AGI: 10
   LUK: 2
   healthModifier: 0.1
   manaModifier: 0.1

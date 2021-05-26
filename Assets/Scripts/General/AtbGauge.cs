@@ -30,7 +30,6 @@ public class AtbGauge : MonoBehaviour
     IEnumerator check()
     {
         yield return new WaitForSeconds(1f);
-        Debug.LogWarning(atbAmount);
     } */ 
 
         /*IEnumerator StartATB()

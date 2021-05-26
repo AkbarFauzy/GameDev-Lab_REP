@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[CreateAssetMenu(fileName ="Enemy Groups", menuName ="Enemy Group")]
+[CreateAssetMenu(fileName = "Enemy Groups", menuName = "Enemy Group")]
 public class EnemyGroup : ScriptableObject
 {
-    public List<GameObject> enemyMember;
+    [SerializeField] public List<GameObject> prefab;
+    [SerializeField] public List<int> number;
 }

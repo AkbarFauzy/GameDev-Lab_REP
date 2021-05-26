@@ -26,7 +26,7 @@ public class SpawnEnemy : MonoBehaviour
 
     IEnumerator spawn(Vector3 spawnRadius)
     {
-        GameObject enemyInstance = Instantiate(EnemyList.enemyMember[0], spawnLocation , Quaternion.identity);
+        //GameObject enemyInstance = Instantiate(EnemyList.enemyMember[0], spawnLocation , Quaternion.identity);
       
         yield return null;
     }

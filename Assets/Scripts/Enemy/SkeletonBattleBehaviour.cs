@@ -11,7 +11,7 @@ public class SkeletonBattleBehaviour : MonoBehaviour
     void Start()
     {
         GeneralScript = GetComponent<Enemy>();
-        stat = GeneralScript.GetComponent<CharacterStats>();
+        //stat = GeneralScript.GetComponent<CharacterStats>();
     }
 
     // Update is called once per frame
