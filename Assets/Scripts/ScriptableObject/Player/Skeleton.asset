@@ -14,14 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvl: 10
   attackType: melee
-  ATK: 86
-  PDEF: 40
-  MDEF: 10
+  baseATK: 100
+  baseMAG: 10
+  basePDEF: 100
+  baseMDEF: 100
   baseHealth: 316
   baseMana: 20
   Speed: 20
   MAXHealth: 0
-  currentHealth: 0
+  currentHealth: 100
   MAXMana: 0
   currentMana: 0
   STR: 10

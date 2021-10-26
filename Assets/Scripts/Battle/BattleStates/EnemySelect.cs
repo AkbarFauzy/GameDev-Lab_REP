@@ -13,7 +13,7 @@ public class EnemySelect : BattleState
     {   
         BattleManager.ChangeCamPriority(6);
         yield return new WaitForFixedUpdate();
-        BattleManager.MainCam.ActiveVirtualCamera.LookAt = BattleManager.EnemyObject[BattleManager.enemyIndex].transform;
+        BattleManager.MainCam.ActiveVirtualCamera.LookAt = BattleManager.EnemyObject[BattleManager.EnemyIndex].transform;
         yield break;
     }
     
@@ -24,12 +24,12 @@ public class EnemySelect : BattleState
         {
             int max = BattleManager.EnemyObject.Count;
 
-            BattleManager.enemyIndex += 1;
-            if (BattleManager.enemyIndex >= max)
+            BattleManager.EnemyIndex += 1;
+            if (BattleManager.EnemyIndex >= max)
             {
-                BattleManager.enemyIndex = 0;
+                BattleManager.EnemyIndex = 0;
             }
-            BattleManager.MainCam.ActiveVirtualCamera.LookAt = BattleManager.EnemyPos[BattleManager.GetEnemySlot(ref BattleManager.enemyIndex)];
+            BattleManager.MainCam.ActiveVirtualCamera.LookAt = BattleManager.EnemyPos[BattleManager.GetEnemySlot(BattleManager.EnemyIndex)];
             isCD = true;
             yield return new WaitForSeconds(0.2f);
             isCD = false;
@@ -43,12 +43,12 @@ public class EnemySelect : BattleState
         {
             int max = BattleManager.EnemyObject.Count;
 
-            BattleManager.enemyIndex -= 1;
-            if (BattleManager.enemyIndex <= -1)
+            BattleManager.EnemyIndex -= 1;
+            if (BattleManager.EnemyIndex <= -1)
             {
-                BattleManager.enemyIndex = max - 1;
+                BattleManager.EnemyIndex = max - 1;
             }
-            BattleManager.MainCam.ActiveVirtualCamera.LookAt = BattleManager.EnemyPos[BattleManager.GetEnemySlot(ref BattleManager.enemyIndex)];
+            BattleManager.MainCam.ActiveVirtualCamera.LookAt = BattleManager.EnemyPos[BattleManager.GetEnemySlot(BattleManager.EnemyIndex)];
             isCD = true;
             yield return new WaitForSeconds(0.2f);
             isCD = false;
@@ -57,13 +57,16 @@ public class EnemySelect : BattleState
 
     public override IEnumerator SubmitButton()
     {
-        return base.SubmitButton();
+        BattleManager.Player[BattleManager.PlayerIndex].Target = BattleManager.EnemyObject[BattleManager.EnemyIndex];
+        BattleManager.Player[BattleManager.PlayerIndex].IsTargeting = true;
+        BattleManager.SetState(new ActionState(BattleManager));
+        yield break;
     }
 
     public override IEnumerator CancelButton()
     {
-        BattleManager.Player[BattleManager.playerIndex].CancelAction();
-        BattleManager.SetState(new PlayerSelect(BattleManager));
+        BattleManager.Player[BattleManager.PlayerIndex].CancelAction();
+        BattleManager.SetState(new ActionState(BattleManager));
         yield break;
     }
 

@@ -23,6 +23,7 @@ public class EnemyStats : ScriptableObject
     public string attackType;
     [Space]
     public int baseATK;
+    public int baseMAG;
     public int basePDEF;
     public int baseMDEF;
     [Space]

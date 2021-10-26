@@ -33,7 +33,6 @@ public class PlayerMoverment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         isGround = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGround && velocity.y < 0) {
             velocity.y = -2f;
@@ -44,7 +43,6 @@ public class PlayerMoverment : MonoBehaviour
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
         if (direction.magnitude >= 0.1f) {
-            Debug.LogWarning(vertical);
 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + playerCam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, smoothTime);

@@ -15,31 +15,32 @@ MonoBehaviour:
   lvlRange:
     min: 1
     max: 10
-  baseHealth: 0
-  baseMana: 0
-  Speed: 0
-  attackType: ranged
-  baseATK: 0
-  basePDEF: 0
-  baseMDEF: 0
+  baseHealth: 100
+  baseMana: 10
+  Speed: 20
+  attackType: melee
+  baseATK: 10
+  baseMAG: 10
+  basePDEF: 10
+  baseMDEF: 10
   STR:
-    min: 0
-    max: 0
+    min: 1
+    max: 10
   INT:
-    min: 0
-    max: 0
+    min: 1
+    max: 10
   FOC:
-    min: 0
-    max: 0
+    min: 1
+    max: 10
   VIT:
-    min: 0
-    max: 0
+    min: 1
+    max: 10
   AGI:
-    min: 0
-    max: 0
+    min: 1
+    max: 10
   LUK:
-    min: 0
-    max: 0
+    min: 1
+    max: 10
   healthModifier:
     min: 1
     max: 1

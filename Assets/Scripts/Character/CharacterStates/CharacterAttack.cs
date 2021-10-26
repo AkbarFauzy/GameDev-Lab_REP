@@ -22,15 +22,20 @@ public class CharacterAttack : CharacterState
         switch (Character.attackType) {
             case (AttackType.melee):
                 yield return new WaitUntil(() => !Character.IsIncapitate());
-                yield return new WaitUntil(() => Character.IsTargeting());
-                Character.RunToTarget(BattleManager.enemyIndex);
-                Character.anim.SetBool("NormalAttack",true);
+                yield return new WaitUntil(() => Character.IsTargeting);
+                Character.RunToTarget(Character.Target.transform.position);
 
-                Character.DoNormalAttack();
-                yield return new WaitUntil(() => !Character.IsTargeting());
-                //Character.RunToTarget();
+                yield return new WaitUntil(() => !Character.IsRunning);
+
+                Character.anim.SetInteger("Attack_ID",0);
+                Character.anim.SetTrigger("isAttacking");
+
+                yield return new WaitUntil(() => !Character.IsTargeting);
+                Character.RunToOriginalSpot(Character.Slot);
+
                 break;
             case (AttackType.ranged):
+
                 break;
             default:
                 break;

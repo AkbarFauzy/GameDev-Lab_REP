@@ -7,19 +7,21 @@ public class Enemy : Characters
     [SerializeField] private EnemyStats stats;
     private List<float> aggro;
 
-    void Start() {
+    void Awake() {
         lvl = stats.GetLvl();
 
-        ATK = stats.baseATK;
-        PDEF = stats.basePDEF;
-        MDEF = stats.baseMDEF;
+        baseATK = stats.baseATK;
+        baseMAG = stats.baseMAG;
+        baseDEF = stats.basePDEF;
+        baseRES = stats.baseMDEF;
+        baseSPD = stats.Speed;
         
         STR = stats.GetSTR();
         INT = stats.GetINT();
         FOC = stats.GetFOC();
         VIT = stats.GetVIT();
         AGI = stats.GetAGI();
-        LUK = stats.GetLUK();
+        LUC = stats.GetLUK();
 
         maxHealth = CalculateMaxHealth();
         maxMana = CalculateMaxMana() ;
@@ -33,6 +35,11 @@ public class Enemy : Characters
                 aggro.Add(InitAggro());
             }
         }
+    }
+
+    private void Start()
+    {
+        UpdateStats();
     }
 
     void Update() { 
@@ -70,7 +77,7 @@ public class Enemy : Characters
     {
         Player t1 = BattleManager.Instance.Player[target1].GetComponent<Player>();
         Player t2 = BattleManager.Instance.Player[target2].GetComponent<Player>();
-        if ((t1.GetSlot() < 3 && t2.GetSlot() < 3) || (t1.GetSlot() > 2 && t2.GetSlot() > 2))
+        if ((t1.Slot < 3 && t2.Slot < 3) || (t1.Slot > 2 && t2.Slot > 2))
         {
             int ran = Random.Range(1, 3);
             if (ran == 2) {
@@ -90,4 +97,12 @@ public class Enemy : Characters
         return stats;
     }
 
+    public void DoPDamage(float modifier)
+    {
+        BattleManager.Instance.CalculatePDamageOnPlayer(this, Target.GetComponent<Player>(), modifier);
+    }
+    public void DoMDamage(float modifier)
+    {
+        BattleManager.Instance.CalculatePDamageOnPlayer(this, Target.GetComponent<Player>(), modifier);
+    }
 }

@@ -4,40 +4,65 @@ using UnityEngine;
 
 public class Player : Characters
 {
-    [SerializeField] private CharacterStats stats;
-    public CharacterStats GetStats() => stats;
-    public CharacterController CControl;
+    [SerializeField] private CharacterStats defaultStats;
+    public GameObject characterBoxPrefab;
+    private CharacterController CControl;
+
+    [Header("Character Equipment")]
+    [Space(10)]
+    [SerializeField] private Equipment[] characterEquipment = new Equipment[System.Enum.GetNames(typeof(EquipmentType)).Length];
+
+
+    [SerializeField]private bool isDontDestroyedOnLoad;
+    private GameObject Instance;
+
     // public BarScript bar;
 
     // Start is called before the first frame update
     private void Awake()
     {
         //Load Player LVL and Stats
-        lvl = stats.lvl;
-        ATK = stats.baseATK;
-        PDEF = stats.basePDEF;
-        MDEF = stats.baseMDEF;
+        lvl = defaultStats.lvl;
+        baseATK = defaultStats.baseATK;
+        baseMAG = defaultStats.baseMAG;
+        baseDEF = defaultStats.basePDEF;
+        baseRES = defaultStats.baseMDEF;
+        baseSPD = defaultStats.Speed;
 
-        STR = stats.STR;
-        INT = stats.INT;
-        FOC = stats.FOC;
-        VIT = stats.VIT;
-        AGI = stats.AGI;
-        LUK = stats.LUK;
+        STR = defaultStats.STR;
+        INT = defaultStats.INT;
+        FOC = defaultStats.FOC;
+        VIT = defaultStats.VIT;
+        AGI = defaultStats.AGI;
+        LUC = defaultStats.LUK;
 
         // Init Health
-        baseHealth = stats.baseHealth;
+        baseHealth = defaultStats.baseHealth;
         maxHealth = baseHealth + CalculateMaxHealth();
-        currentHealth = stats.currentHealth;
+        currentHealth = defaultStats.currentHealth;
 
         // Init mana
-        baseMana = stats.baseMana;
+        baseMana = defaultStats.baseMana;
         maxMana = baseMana + CalculateMaxMana();
-        currentMana = stats.currentMana;
+        currentMana = defaultStats.currentMana;
+        if (Instance == null)
+        {
+            Instance = this.gameObject;
+            if (isDontDestroyedOnLoad )
+            {
+                DontDestroyOnLoad(Instance);
+            }
+        }
+        else {
+            Destroy(gameObject);
+            Debug.Log(Instance);
+        }
     }
 
     void Start()
     {
+        SetCharacterClasses();
+        UpdateStats();
         anim = this.GetComponent<Animator>();
         //bar.setMaxValue(stats.currentHealth, maxHP);
         //bar.setValue(stats.currentHealth);
@@ -52,5 +77,20 @@ public class Player : Characters
         }
         
         return Exp;
+    }
+    public int DoPDamage(float modifier)
+    {
+         return BattleManager.Instance.CalculatePDamageOnEnemy(this, Target.GetComponent<Enemy>(), modifier);
+    }
+
+    public int DoMdamage(float modifier)
+    {
+        return BattleManager.Instance.CalculateMDamageOnEnemy(this, Target.GetComponent<Enemy>(), modifier);
+    }
+
+    public void RecievedDamaged(int damage)
+    {
+        currentHealth -= damage;
+        BattleManager.Instance.BU.CharPanel[IDX].GetComponent<playerBattlePanel>().Hpbar.SetValue(currentHealth);
     }
 }

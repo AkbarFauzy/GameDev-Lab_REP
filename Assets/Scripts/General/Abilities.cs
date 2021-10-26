@@ -2,19 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[CreateAssetMenu(fileName = "New Abilities", menuName = "Abilities")]
-public class Abilities : ScriptableObject
+[System.Serializable]
+public class Abilities
 {
-    public string abilitiesName;
-    public string Category;
-    public string SubCategory;
+    [SerializeField]public bool isUnlocked;
+    [SerializeField]public CharacterSkills skills;
 
-    public int Element;
-    //public int ApCost;
-    
-    public int MpCost;
-    public int DamageModifier;
-    public int AttackType;
-    
+   public Abilities(bool unlocked, CharacterSkills skill) {
+        this.isUnlocked = unlocked;
+        this.skills = skill;
+    } 
 }

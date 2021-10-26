@@ -13,7 +13,7 @@ public class BeginBattle : BattleState
         //BattleManager.BU.SelectedButton = BattleManager.BU.CommandPanel[0];
 
         yield return new WaitForSeconds(1f);
-        BattleManager.SetState(new PlayerSelect(BattleManager));
+        BattleManager.SetState(new ActionState(BattleManager));
     }
 
 }

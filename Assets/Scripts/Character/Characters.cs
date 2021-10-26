@@ -1,29 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+                                             
 public class Characters : CharacterStateMachine
 {
-    public IEnumerator MainCoroutine { get; set;}
+    private IEnumerator MainCoroutine { get; set;}
 
     public string characterName;
+    public Classes characterClasses;
+    protected CharacterClasses classes;
+    public string characterTraitsDesc;
     public Sprite characterSprite;
     public AttackType attackType;      
 
     //[SerializeField] private CharacterClasses job;
 
     public Animator anim;
-    public List<ScriptableObject> equipment;
-    public List<CharacterSkills> skills;
+    public List<Equipment> equipment;
+    [SerializeField]public List<Abilities> abilities = new List<Abilities>();
     
     private string[] elementDebuff = new string[2];
 
     public int slot;
+    private GameObject target;
+
     private bool isIncapitate;
     private bool isTargeting;
     private bool isBloking;
     private bool isRunning;
+    private bool isAction;
 
     protected int lvl;
     protected int baseHealth;
@@ -32,40 +37,126 @@ public class Characters : CharacterStateMachine
     protected int baseMana;
     protected int maxMana;
     protected int currentMana;
-    protected int ATK;
-    protected int PDEF;
-    protected int MDEF;
-    protected float speed;
 
-    protected int STR;
-    protected int INT;
-    protected int FOC;
-    protected int VIT;
-    protected int AGI;
-    protected int LUK;
+    protected int baseATK;
+    protected int baseMAG;
+    protected int baseDEF;
+    protected int baseRES;
+    protected int baseSPD;
+
+    protected int calculatedATK;
+    protected int calculatedMAG;
+    protected int calculatedDEF;
+    protected int calculatedRES;
+    protected int calculatedSPD;
+
+    protected int str;
+    protected int inte;
+    protected int foc;
+    protected int vit;
+    protected int agi;
+    protected int luc;
     protected float healthModifier;
     protected float manaModifier;
+    protected float damageModifier;
+
+    private int idx;
+
+    public int IDX {
+        get => idx; set => idx = value;
+    }
+    public bool IsTargeting{
+        get => isTargeting; set => isTargeting = value;
+    }
+    public bool IsRunning {
+        get => isRunning; set => isRunning = value;
+    }
+    public bool IsAction {
+        get => isAction; set => isAction = value;
+    }
 
     #region Stats
-    public int GetSlot() => slot;
-    public void SetSlot(int s) {
-        slot = s;
+    public GameObject Target{
+        get => target; set => target = value;
     }
 
-    public int GetPDEF() => PDEF;
-    public int GetCurrentHealth() => currentHealth;
-    public int GetMaxHP() => maxHealth;
-    public void SetCurrentHealth(int newHealthValue)
+    public int Slot {
+        get => slot; set => slot = value;
+    }
+
+    public int LVL {
+        get => lvl; set => lvl = value;
+    }
+
+    public int ATK {
+        get => calculatedATK; set => calculatedATK = value;
+    }
+    public int MAG {
+        get => calculatedMAG; set => calculatedMAG = value;
+    }
+    public int DEF {
+        get => calculatedDEF; set => calculatedDEF = value;
+    }
+    public int RES {
+        get => calculatedRES; set => calculatedRES = value;
+    }
+    public int SPD{
+        get => calculatedSPD; set => calculatedSPD = value;
+    }
+    public int STR {
+        get => str; set => str = value;
+    }
+    public int INT {
+        get => inte; set => inte = value;
+    }
+    public int FOC {
+        get => foc; set => foc = value;
+    }
+    public int VIT {
+        get => vit; set => vit = value;
+    }
+    public int AGI {
+        get => agi; set => agi = value;
+    }
+    public int LUC {
+        get => luc; set => luc = value;
+    }
+
+    public int CurrentHp {
+        get => currentHealth; set => currentHealth = value;
+    }
+
+    public int MaxHp{
+        get => maxHealth;
+    }
+
+    public int MaxMp {
+        get => maxMana;
+    }
+    public int CurrentMp {
+        get => currentMana; set => currentMana = value;
+    }
+
+    public float DamageModifier
     {
-        currentHealth = newHealthValue;
+        get => damageModifier; set => damageModifier = value;
     }
 
-    public int GetMaxMP() => maxMana;
-    public int GetCurrentMP() => currentMana;
-    public float CalculateSpeed() => speed + (AGI / 2);
-    public int CalculateLuck() => 0;
-    public int CalculateDef() => 0;
-    public bool CheckOriginalSpot() => this.transform.position.z == BattleManager.Instance.CharPos[GetSlot() - 1].position.z;
+    private int CalculateFinalATK() => baseATK + (lvl * Mathf.CeilToInt((float)baseATK * 0.05f)) + (STR * Mathf.CeilToInt(0.01f * (float)baseATK));
+    private int CalculateFinalMAG() => baseMAG + (lvl * Mathf.CeilToInt((float)baseMAG * 0.05f)) + (INT * Mathf.CeilToInt(0.02f * (float)baseMAG));
+    private int CalculateFinalDEF() => baseDEF + (lvl * Mathf.CeilToInt((float)baseDEF * 0.1f)) + (VIT * Mathf.CeilToInt(0.01f * (float)baseDEF));
+    private int CalculateFinalRES() => baseRES + (lvl * Mathf.CeilToInt((float)baseRES * 0.05f)) + (INT * Mathf.CeilToInt(0.02f * (float)baseRES));
+    private int CalculateFinalSPD() => baseSPD + (lvl * Mathf.CeilToInt((float)baseSPD * 0.01f)) + (INT * Mathf.CeilToInt(0.01f * (float)baseRES));
+
+    public void UpdateStats() {
+        ATK = CalculateFinalATK();
+        MAG = CalculateFinalMAG();
+        DEF = CalculateFinalDEF();
+        RES = CalculateFinalRES();
+        SPD = CalculateFinalSPD();
+    }
+
+    public bool CheckOriginalSpot() => this.transform.position.z == BattleManager.Instance.CharPos[Slot - 1].position.z;
     #endregion
 
     #region Health
@@ -84,26 +175,34 @@ public class Characters : CharacterStateMachine
     private int CalculateManaByLvl() => baseMana + Mathf.RoundToInt(baseMana * manaModifier);
     #endregion
 
-    public bool IsTargeting() => isTargeting;
     public void SetTargetOn() => isTargeting = true;
     public void SetTargetOff() => isTargeting = false;
     public bool IsIncapitate() => isIncapitate;
 
-    public void RunToTarget(int target)
+    public void SetCharacterClasses()
     {
-        anim.SetBool("isRunning", true);
-        BattleManager.Instance.isCharacterMove = true;
-        //running to target if attack type melee else stay in place
-        StartCoroutine(MoveFromTo(this.transform, this.transform.position, BattleManager.Instance.EnemyObject[target].transform.position, 2f));
+        switch (characterClasses) {
+            case (Classes.Tanker):
+                classes = new TankerClass();
+                classes.Traits();
+                break;
+            case (Classes.Warrior):
+                classes = new WarriorClass();
+                break;
+        }
+    }                                                        
+    public void RunToTarget(Vector3 target)
+    {
+        IsRunning = true;
+        anim.SetBool("isRunning", IsRunning);
+        StartCoroutine(MoveFromTo(this.transform, this.transform.position, target - new Vector3(0f,0f,1f), 10f));        
     }
 
     public void RunToOriginalSpot(int slot)
     {
-        int charSlot = BattleManager.Instance.Player[slot].GetComponent<Player>().GetSlot();
-        anim.SetBool("isRunning", true);
-        BattleManager.Instance.isCharacterMove = true;
-        //running to target if attack type melee else stay in place
-        StartCoroutine(MoveFromTo(this.transform, this.transform.position, BattleManager.Instance.CharPos[charSlot].position, 2f));
+        isRunning = true;
+        anim.SetBool("isRunning", isRunning);
+        StartCoroutine(MoveFromTo(this.transform, this.transform.position, BattleManager.Instance.CharPos[slot].position, 10f));
     }
 
     IEnumerator MoveFromTo(Transform objToMove, Vector3 a, Vector3 b, float speed)
@@ -116,15 +215,14 @@ public class Characters : CharacterStateMachine
             objToMove.position = Vector3.Lerp(a, b, t);
             yield return new WaitForFixedUpdate();
         }
-        BattleManager.Instance.isCharacterMove = false;
+        IsRunning = false;
+        anim.SetBool("isRunning", IsRunning);
     }
-
 
     public void EndAction()
     {
         anim.SetBool("isAttacking", false);
     }
-
 
     public void CancelAction() {
         StopCoroutine(MainCoroutine);
@@ -135,33 +233,4 @@ public class Characters : CharacterStateMachine
         MainCoroutine = State.Attack();
         StartCoroutine(MainCoroutine);
     }
-
-    public void DoSkill(int target, int index)
-    {
-        switch (skills[index].skillType) {
-            case SkillType.Offensive:
-                break;
-            case SkillType.Support:
-                break;
-            default:
-                break;
-        }
-    }
-
-    public void DoItem(int player, int target)
-    {
-        //start Item
-    }
-
-    public int CalculateDamage(int targetDef,float damageModifier = 1f, bool isCritical = false)
-    {
-        int damage = Mathf.FloorToInt(((Mathf.Pow(ATK, 2) / 4) / (targetDef * 1.5f)) * damageModifier);
-        if (isCritical)
-        {
-            damage *= 2;
-        }
-
-        return damage;
-    }
-
 }

@@ -38,7 +38,7 @@ public class Carousell : MonoBehaviour
         }
 
         currentPanels = 0;
-        lastPanels = activePanel -1;
+        lastPanels = GameManager.Instance.activeCharacter.Length-1;
         panels[currentPanels].transform.localScale = new Vector3(scaleRange.max, scaleRange.max, scaleRange.max);
         offset = (activePanel > 1) ? offset = panels[0].transform.localPosition - panels[1].transform.localPosition : offset = new Vector3(0,0,0);
         initPos = panels[0].transform.localPosition;
@@ -127,25 +127,25 @@ public class Carousell : MonoBehaviour
 
         if (isChangeToLast)
         {
-            while (counter < 0.1f)
+            while (counter < 0.05f)
             {
                 panel1.transform.localPosition = Vector3.Lerp(panel1.transform.localPosition, originalPos + offset, Mathf.Clamp(speed * Time.deltaTime, 0, 1));
                 counter += Time.deltaTime;
-                yield return new WaitForFixedUpdate();
+                yield return new WaitForEndOfFrame();
             }
             panel1.transform.localPosition = lastPos - offset;
-            while (counter < 0.35f)
+            while (counter < 0.1f)
             {
                 panel1.transform.localPosition = Vector3.Lerp(panel1.transform.localPosition, lastPos, Mathf.Clamp(speed * Time.deltaTime, 0, 1));
                 counter += Time.deltaTime;
-                yield return new WaitForFixedUpdate();
+                yield return new WaitForEndOfFrame();
             }
         }
         else { 
-            while (counter < 0.3f) {
+            while (counter < 0.1f) {
                 panel1.transform.localPosition = Vector3.Lerp(panel1.transform.localPosition, originalPos + offset, Mathf.Clamp(speed * Time.deltaTime, 0, 1));            
                 counter += Time.deltaTime;
-                yield return new WaitForFixedUpdate();
+                yield return new WaitForEndOfFrame();
             }
         }
     }
@@ -157,27 +157,27 @@ public class Carousell : MonoBehaviour
 
         if (isChangeToFirst)
         {
-            while (counter < 0.1f)
+            while (counter < 0.05f)
             {
                 panel1.transform.localPosition = Vector3.Lerp(panel1.transform.localPosition, originalPos - offset, Mathf.Clamp(speed * Time.deltaTime, 0, 1));
                 counter += Time.deltaTime;
-                yield return new WaitForFixedUpdate();
+                yield return new WaitForEndOfFrame();
             }
            panel1.transform.localPosition = initPos + offset;
-            while (counter < 0.3f)
+            while (counter < 0.1f)
             {
                 panel1.transform.localPosition = Vector3.Lerp(panel1.transform.localPosition, initPos, Mathf.Clamp(speed * Time.deltaTime, 0, 1));
                 counter += Time.deltaTime;
-                yield return new WaitForFixedUpdate();
+                yield return new WaitForEndOfFrame();
             }
         }
         else
         {
-            while (counter < 0.3f)
+            while (counter < 0.1f)
             {
                 panel1.transform.localPosition = Vector3.Lerp(panel1.transform.localPosition, originalPos - offset, Mathf.Clamp(speed * Time.deltaTime, 0, 1));
                 counter += Time.deltaTime;
-                yield return new WaitForFixedUpdate();
+                yield return new WaitForEndOfFrame();
             }
         }
     }

@@ -10,7 +10,6 @@ public class CharacterStateMachine : MonoBehaviour
     public void SetState(CharacterState state) {
         State = state;
         StartCoroutine(State.Start());
-    
     }
 
 }

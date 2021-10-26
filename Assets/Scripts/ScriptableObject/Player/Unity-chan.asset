@@ -14,21 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvl: 1
   attackType: ranged
-  baseATK: 32
-  basePDEF: 12
-  baseMDEF: 10
-  baseHealth: 414
-  baseMana: 100
+  baseATK: 100
+  baseMAG: 30
+  basePDEF: 13
+  baseMDEF: 5
+  baseHealth: 100
+  baseMana: 12
   Speed: 10
-  MAXHealth: 0
+  MAXHealth: 220
   currentHealth: 100
-  MAXMana: 0
-  currentMana: 100
-  STR: 55
-  INT: 20
-  FOC: 0
-  VIT: 20
-  AGI: 10
+  MAXMana: 20
+  currentMana: 20
+  STR: 95
+  INT: 50
+  FOC: 50
+  VIT: 50
+  AGI: 50
   LUK: 1
   healthModifier: 0.1
   manaModifier: 0.1

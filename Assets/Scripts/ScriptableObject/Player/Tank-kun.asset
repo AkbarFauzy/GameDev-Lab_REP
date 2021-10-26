@@ -13,25 +13,24 @@ MonoBehaviour:
   m_Name: Tank-kun
   m_EditorClassIdentifier: 
   lvl: 1
-  nextLvl: 0
-  sp: 0
-  exp: 0
-  ATBAmount: 0
-  attackType: 
-  baseHealth: 316
+  attackType: melee
+  baseATK: 100
+  baseMAG: 10
+  basePDEF: 200
+  baseMDEF: 200
+  baseHealth: 500
   baseMana: 25
   Speed: 10
-  driveGauge: 2
   MAXHealth: 316
   currentHealth: 316
   MAXMana: 40
   currentMana: 0
   STR: 100
-  PDEF: 0
-  INT: 0
-  MDEF: 0
+  INT: 10
+  FOC: 10
   VIT: 100
-  AGI: 0
+  AGI: 20
   LUK: 0
   healthModifier: 0.03
   manaModifier: 0.014
+  statsModifier: 0

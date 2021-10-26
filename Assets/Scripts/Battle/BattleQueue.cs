@@ -31,11 +31,6 @@ public class BattleQueue :  MonoBehaviour
     {
         battleQueue = new Queue<battleAddress>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     public void addActionQueue(int characterIndex, int enemyIndex, ActionType actionType, bool isPlayer)
     {
